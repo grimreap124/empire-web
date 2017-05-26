@@ -1,8 +1,10 @@
 # PowerShell Empire Web
 
-
 PowerShell Empire Web utilizes the [Empire REST API Server](https://github.com/EmpireProject/Empire/wiki/RESTful-API). It is a web interface for using [PowerShell Empire](https://github.com/EmpireProject/Empire/).
 
+# Current version 2.0-dev
+
+- Added support for Empire v2.0
 
 # Run Empire REST API Server
 

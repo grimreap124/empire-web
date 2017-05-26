@@ -16,12 +16,27 @@ if(!empty($arr_result))
                     <div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' href='#collapse$i'>Listener Name: ".htmlentities($arr_result["listeners"][$i]["name"])."</a></h4></div>
                     <div id='collapse$i' class='panel-collapse collapse'>
                         <div class='panel-body'>";
-        $empire_listeners .= '<table class="table table-hover table-striped"><thead><tr><th>Listener Option</th><th>Listener Value</th></tr></thead><tbody>';
+        //Create table for listener details
+        $empire_listeners .= '<table class="table table-hover table-striped table-bordered table-condensed"><thead><tr><th>Listener Detail</th><th>Detail Value</th></tr></thead><tbody>';
         foreach($arr_result["listeners"][$i] as $key => $value)
         {
-            $key = htmlentities($key);
-            $value = htmlentities($value);
-            $empire_listeners .= "<tr><td>$key</td><td>$value</td></tr>";
+            if($key != "options")
+            {
+                $key = htmlentities($key);
+                $value = htmlentities($value);
+                $empire_listeners .= "<tr><td>$key</td><td>$value</td></tr>";
+            }
+        }
+        $empire_listeners .= '</tbody></table>';
+        //Create table for listener options
+        $empire_listeners .= '<br><table class="table table-hover table-striped table-bordered table-condensed"><thead><tr><th>Option</th><th>Description</th><th>Required</th><th>Value</th></tr></thead><tbody>';
+        foreach($arr_result["listeners"][$i]["options"] as $listener_option_name => $listener_option_value_arr)
+        {
+            $listener_option_name = htmlentities($listener_option_name);
+            $listener_opt_desc = htmlentities($listener_option_value_arr["Description"]);
+            $listener_opt_req = htmlentities($listener_option_value_arr["Required"] ? 'Yes' : 'No');
+            $listener_opt_val = htmlentities($listener_option_value_arr["Value"]);
+            $empire_listeners .= "<tr><td>$listener_option_name</td><td>$listener_opt_desc</td><td>$listener_opt_req</td><td>$listener_opt_val</td></tr>";
         }
         $empire_listeners .= '</tbody></table>';
         $empire_listeners .= "</div></div></div>";

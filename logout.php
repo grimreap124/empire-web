@@ -9,21 +9,5 @@ if (ini_get("session.use_cookies"))
 }
 
 session_destroy();
+header("Location: index.php");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Empire Web Logged Out</title>
-	<?php require_once("includes/head-section.php"); ?>
-</head>
-
-<body>
-    <div class="container">
-        <?php require_once("includes/navbar.php"); ?>
-        <div class="row clearfix">
-            <?php echo '<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> You have been logged out.</div>'; ?>
-        </div>
-    </div>
-    <?php @require_once("includes/footer.php"); ?>
-</body>
-</html>
